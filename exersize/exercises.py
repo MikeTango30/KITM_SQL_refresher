@@ -85,7 +85,7 @@ def exercise_six():
     # 6. Write a query to display the last names of employees whose names have exactly 6 characters.
     query = """SELECT last_name
                 FROM employees 
-                WHERE first_name LIKE '______'"""
+                WHERE length(first_name) = 6"""
     print(execute_select_query(query))
 
 

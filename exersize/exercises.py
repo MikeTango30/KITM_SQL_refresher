@@ -77,8 +77,8 @@ def exercise_five():
     # and whose salary is not equal to $4,500, $10,000, or $15,000
     query = """SELECT last_name, job_id, salary
                 FROM employees 
-                WHERE job_id = 'IT_PROG' OR job_id = 'SH_CLERK' 
-                AND NOT salary = 4500 OR NOT salary = 10000 OR NOT salary = 15000"""
+                WHERE (job_id = 'IT_PROG' OR job_id = 'SH_CLERK')
+                AND (salary != 4500 AND salary != 10000 AND salary != 15000)"""
     print(execute_select_query(query))
 
 
@@ -96,15 +96,6 @@ def exercise_seven():
                 FROM employees 
                 WHERE first_name LIKE '__e%'"""
     print(execute_select_query(query))
-
-
-exercise_one()
-exercise_two()
-exercise_three()
-exercise_four()
-exercise_five()
-exercise_six()
-exercise_seven()
 
 
 # Part Two
@@ -191,6 +182,15 @@ def exercise_11():
     print(execute_select_query(query))
 
 
+#Part One
+exercise_one()
+exercise_two()
+exercise_three()
+exercise_four()
+exercise_five()
+exercise_six()
+exercise_seven()
+#Part Two
 exercise_1()
 exercise_2()
 exercise_3()

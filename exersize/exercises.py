@@ -77,7 +77,8 @@ def exercise_five():
     # and whose salary is not equal to $4,500, $10,000, or $15,000
     query = """SELECT last_name, job_id, salary
                 FROM employees 
-                WHERE job_id = 'IT_PROG' OR job_id = 'SH_CLERK'"""
+                WHERE job_id = 'IT_PROG' OR job_id = 'SH_CLERK' 
+                AND NOT salary = 4500 OR NOT salary = 10000 OR NOT salary = 15000"""
     print(execute_select_query(query))
 
 

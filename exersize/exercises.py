@@ -176,29 +176,89 @@ def exercise_10():
 
 def exercise_11():
     # 11. Write a query to find the manager ID and the salary of the lowest paid employee for that manager.
-    query = """SELECT manager_id, MIN(salary)
+    query = """CREATE VIEW IF NOT EXISTS lowest_salary_by_manager AS
+                SELECT manager_id, MIN(salary)
                 FROM employees
                 GROUP BY manager_id"""
+    execute_select_query(query)
+    print(execute_select_query("SELECT * FROM lowest_salary_by_manager"))
+
+
+# PART THREE
+def exercise_3_1():
+    # 1. Write a query to find the names (first_name, last_name) and salaries of the employees
+    # who have a higher salary than the employee whose last_name='Bull'.
+    query = """SELECT first_name, last_name, salary FROM employees
+                WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Bull')"""
     print(execute_select_query(query))
 
 
-#Part One
-exercise_one()
-exercise_two()
-exercise_three()
-exercise_four()
-exercise_five()
-exercise_six()
-exercise_seven()
-#Part Two
-exercise_1()
-exercise_2()
-exercise_3()
-exercise_4()
-exercise_5()
-exercise_6()
-exercise_7()
-exercise_8()
-exercise_9()
-exercise_10()
-exercise_11()
+def exercise_3_7():
+    # 7. Write a query to find the names (first_name, last_name) of the employees
+    # who have a manager who works for a department based in the United States.
+    # Tables: employees, departments, locations
+    query = """SELECT first_name, last_name, country_id FROM employees, locations
+                WHERE manager_id IN (
+                SELECT manager_id FROM departments WHERE location_id IN (
+                SELECT location_id FROM locations WHERE country_id = 'US'))"""
+    print(execute_select_query(query))
+
+
+def exercise_3_2():
+    # 2. Write a query to find the names (first_name, last_name) of the employees who are managers
+    query = """SELECT first_name, last_name FROM employees
+                WHERE employee_id IN (
+                SELECT manager_id FROM employees)"""
+    print(execute_select_query(query))
+
+
+def exercise_3_3():
+    # 3. Write a query to find the names (first_name, last_name), the salary of the employees
+    # whose salary is greater than the average salary
+    query = """SELECT first_name, last_name, salary FROM employees
+                WHERE salary > (SELECT AVG(salary) FROM employees)"""
+    print(execute_select_query(query))
+
+
+# print(execute_select_query("PRAGMA table_info (locations)"))
+
+# DEPARTMENTS
+# department_id,
+# depart_name,
+# manager_id,
+# location_id
+
+# LOCATIONS
+# location_id
+# street_address
+# postal_code
+# city
+# state_province
+# country_id
+
+# # Part One
+# exercise_one()
+# exercise_two()
+# exercise_three()
+# exercise_four()
+# exercise_five()
+# exercise_six()
+# exercise_seven()
+# # Part Two
+# exercise_1()
+# exercise_2()
+# exercise_3()
+# exercise_4()
+# exercise_5()
+# exercise_6()
+# exercise_7()
+# exercise_8()
+# exercise_9()
+# exercise_10()
+# exercise_11()
+# print(execute_select_query("SELECT * FROM locations"))
+# exercise_3_1()
+# exercise_3_2()
+# exercise_3_3()
+# print(execute_select_query("SELECT AVG(salary) FROM employees"))
+exercise_3_7()

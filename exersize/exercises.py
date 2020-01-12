@@ -1,15 +1,5 @@
 import sqlite3
-# employee_id,
-# first_name,
-# last_name,
-# email,
-# phone_number,
-# hire_date,
-# job_id,
-# salary,
-# commission_pct,
-# manager_id,
-# department_id
+
 db_name = "exercise.db"
 
 
@@ -18,6 +8,8 @@ def execute_select_query(query):
         connection = sqlite3.connect(db_name)
         cursor = connection.cursor()
         rows = cursor.execute(query).fetchall()
+        for row in rows:
+            print(row)
         return rows
     except sqlite3.DatabaseError as error:
         print(error)
@@ -37,7 +29,7 @@ def exercise_one():
                 FROM employees 
                 WHERE salary 
                 NOT BETWEEN 10000 AND 15000"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_two():
@@ -48,7 +40,7 @@ def exercise_two():
                 FROM employees 
                 WHERE department_id=30 OR department_id=100 
                 ORDER BY department_id """
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_three():
@@ -60,7 +52,7 @@ def exercise_three():
                 WHERE salary NOT BETWEEN 10000 AND 15000 
                 AND department_id=30 OR department_id=100 
                 ORDER BY department_id"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_four():
@@ -68,7 +60,7 @@ def exercise_four():
     query = """SELECT first_name
                 FROM employees 
                 WHERE first_name LIKE '%b%' AND first_name LIKE '%c%'"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_five():
@@ -79,7 +71,7 @@ def exercise_five():
                 FROM employees 
                 WHERE (job_id = 'IT_PROG' OR job_id = 'SH_CLERK')
                 AND (salary != 4500 AND salary != 10000 AND salary != 15000)"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_six():
@@ -87,7 +79,7 @@ def exercise_six():
     query = """SELECT last_name
                 FROM employees 
                 WHERE LENGTH(first_name) = 6"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_seven():
@@ -95,7 +87,7 @@ def exercise_seven():
     query = """SELECT last_name
                 FROM employees 
                 WHERE first_name LIKE '__e%'"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 # Part Two
@@ -103,28 +95,28 @@ def exercise_1():
     # 1. Write a query to list the amount of jobs available in the employees table. ANSWER: 19.
     query = """SELECT COUNT(DISTINCT job_id)
                 FROM employees"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_2():
     # 2. Write a query to get the total of salaries to pay.
     query = """SELECT SUM(salary)
                 FROM employees"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_3():
     # 3. Write a query to get the minimum salary from employees table.
     query = """SELECT salary
                 FROM employees ORDER BY salary LIMIT 1"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_4():
     # 4. Write a query to get the highest salary of an employee.
     query = """SELECT salary
                 FROM employees ORDER BY salary DESC LIMIT 1"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_5():
@@ -132,14 +124,14 @@ def exercise_5():
     query = """SELECT AVG(salary), COUNT(employee_id)
                 FROM employees 
                 WHERE department_id = 90"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_6():
     # 6. Write a query to get the highest, lowest, sum and average salary of all employees.
     query = """SELECT MAX(salary), MIN(salary), SUM(salary), AVG(salary)
                 FROM employees"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_7():
@@ -147,14 +139,14 @@ def exercise_7():
     query = """SELECT COUNT(employee_id)
                 FROM employees
                 GROUP BY job_id"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_8():
     # 8. Write a query to get the difference between the highest and lowest salaries.
     query = """SELECT MAX(salary) - MIN(salary)
                 FROM employees"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_9():
@@ -162,7 +154,7 @@ def exercise_9():
     query = """SELECT department_id, SUM(salary)
                 FROM employees
                 GROUP BY department_id"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_10():
@@ -171,7 +163,7 @@ def exercise_10():
                 FROM employees
                 WHERE NOT job_id = 'IT_PROG'
                 GROUP BY job_id"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_11():
@@ -181,7 +173,7 @@ def exercise_11():
                 FROM employees
                 GROUP BY manager_id"""
     execute_select_query(query)
-    print(execute_select_query("SELECT * FROM lowest_salary_by_manager"))
+    execute_select_query("SELECT * FROM lowest_salary_by_manager")
 
 
 # PART THREE
@@ -190,18 +182,7 @@ def exercise_3_1():
     # who have a higher salary than the employee whose last_name='Bull'.
     query = """SELECT first_name, last_name, salary FROM employees
                 WHERE salary > (SELECT salary FROM employees WHERE last_name = 'Bull')"""
-    print(execute_select_query(query))
-
-
-def exercise_3_7():
-    # 7. Write a query to find the names (first_name, last_name) of the employees
-    # who have a manager who works for a department based in the United States.
-    # Tables: employees, departments, locations
-    query = """SELECT first_name, last_name, country_id FROM employees, locations
-                WHERE manager_id IN (
-                SELECT manager_id FROM departments WHERE location_id IN (
-                SELECT location_id FROM locations WHERE country_id = 'US'))"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_3_2():
@@ -209,7 +190,7 @@ def exercise_3_2():
     query = """SELECT first_name, last_name FROM employees
                 WHERE employee_id IN (
                 SELECT manager_id FROM employees)"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
 def exercise_3_3():
@@ -217,10 +198,67 @@ def exercise_3_3():
     # whose salary is greater than the average salary
     query = """SELECT first_name, last_name, salary FROM employees
                 WHERE salary > (SELECT AVG(salary) FROM employees)"""
-    print(execute_select_query(query))
+    execute_select_query(query)
 
 
-# print(execute_select_query("PRAGMA table_info (locations)"))
+def exercise_3_4():
+    # 4. Write a query to find the names (first_name, last_name), the salary of the employees
+    # whose salary is equal to the minimum salary for their job grade.
+    # Tables: employees, jobs.
+    query = """SELECT first_name, last_name, salary FROM employees
+                WHERE salary = (SELECT min_salary FROM jobs WHERE job_id = employees.job_id)"""
+    execute_select_query(query)
+
+
+def exercise_3_5():
+    # 5. Write a query to find the names (first_name, last_name), the salary of the employees
+    # who earn more than the average salary
+    # and who works in any of the IT departments.
+    # Tables: employees, departments
+    query = """SELECT first_name, last_name, salary FROM employees
+                WHERE salary > (SELECT AVG(salary) FROM employees) 
+                AND department_id IN (SELECT department_id FROM departments WHERE depart_name LIKE 'IT%')"""
+    execute_select_query(query)
+
+
+def exercise_3_6():
+    # 6. Write a query to get 3 maximum salaries.
+    # Tables: employees
+    query = """SELECT salary FROM employees ORDER BY salary DESC LIMIT 3"""
+    execute_select_query(query)
+
+
+def exercise_3_7():
+    # 7. Write a query to find the names (first_name, last_name) of the employees
+    # who have a manager who works for a department based in the United States.
+    # Tables: employees, departments, locations
+    query = """SELECT first_name, last_name, manager_id FROM employees
+                WHERE manager_id IN (
+                SELECT manager_id FROM departments WHERE location_id IN (
+                SELECT location_id FROM locations WHERE country_id = 'US')) ORDER BY manager_id"""
+    execute_select_query(query)
+
+
+# execute_select_query("PRAGMA table_info (jobs)")
+
+# EMPLOYEES
+# employee_id,
+# first_name,
+# last_name,
+# email,
+# phone_number,
+# hire_date,
+# job_id,
+# salary,
+# commission_pct,
+# manager_id,
+# department_id
+
+# JOBS
+# job_id
+# job_title
+# min_salary
+# max_salary
 
 # DEPARTMENTS
 # department_id,
@@ -236,7 +274,7 @@ def exercise_3_3():
 # state_province
 # country_id
 
-# # Part One
+# # PART ONE
 # exercise_one()
 # exercise_two()
 # exercise_three()
@@ -244,7 +282,8 @@ def exercise_3_3():
 # exercise_five()
 # exercise_six()
 # exercise_seven()
-# # Part Two
+
+# # PART TWO
 # exercise_1()
 # exercise_2()
 # exercise_3()
@@ -256,9 +295,23 @@ def exercise_3_3():
 # exercise_9()
 # exercise_10()
 # exercise_11()
-# print(execute_select_query("SELECT * FROM locations"))
-# exercise_3_1()
-# exercise_3_2()
-# exercise_3_3()
-# print(execute_select_query("SELECT AVG(salary) FROM employees"))
+
+# PART THREE
+exercise_3_1()
+exercise_3_2()
+exercise_3_3()
+exercise_3_4()
+exercise_3_5()
+exercise_3_6()
 exercise_3_7()
+
+# 3_4 CHECK:
+# execute_select_query("SELECT job_id, MIN(salary) FROM employees GROUP BY job_id ORDER BY job_id")
+# execute_select_query("SELECT job_id, min_salary FROM jobs ORDER BY job_id")
+
+# 3_7 CHECK | managers in US
+# execute_select_query("""SELECT DISTINCT manager_id FROM departments
+#                         WHERE location_id IN (
+#                         SELECT location_id FROM locations
+#                         WHERE country_id = 'US') ORDER BY manager_id""")
+# execute_select_query("SELECT first_name, last_name FROM employees WHERE manager_id = 200")

@@ -232,14 +232,21 @@ def exercise_3_7():
     # 7. Write a query to find the names (first_name, last_name) of the employees
     # who have a manager who works for a department based in the United States.
     # Tables: employees, departments, locations
-    query = """SELECT first_name, last_name, manager_id FROM employees
+
+    # query1 = """SELECT first_name, last_name FROM employees
+    #                   WHERE manager_id IN (
+    #                   SELECT manager_id FROM departments WHERE location_id IN (
+    #                   SELECT location_id FROM locations WHERE country_id = 'US'))"""
+
+    query = """SELECT first_name, last_name FROM employees
                 WHERE manager_id IN (
-                SELECT manager_id FROM departments WHERE location_id IN (
-                SELECT location_id FROM locations WHERE country_id = 'US')) ORDER BY manager_id"""
+                SELECT employee_id FROM employees WHERE department_id IN ( 
+                SELECT department_id FROM departments WHERE location_id IN (
+                SELECT location_id FROM locations WHERE country_id = 'US')))"""
     execute_select_query(query)
 
 
-# execute_select_query("PRAGMA table_info (jobs)")
+# execute_select_query("PRAGMA table_info (employees)")
 
 # EMPLOYEES
 # employee_id,
@@ -253,6 +260,7 @@ def exercise_3_7():
 # commission_pct,
 # manager_id,
 # department_id
+# Avg_Salary
 
 # JOBS
 # job_id
@@ -297,13 +305,13 @@ def exercise_3_7():
 # exercise_11()
 
 # PART THREE
-exercise_3_1()
-exercise_3_2()
-exercise_3_3()
-exercise_3_4()
+# exercise_3_1()
+# exercise_3_2()
+# exercise_3_3()
+# exercise_3_4()
 exercise_3_5()
-exercise_3_6()
-exercise_3_7()
+# exercise_3_6()
+# exercise_3_7()
 
 # 3_4 CHECK:
 # execute_select_query("SELECT job_id, MIN(salary) FROM employees GROUP BY job_id ORDER BY job_id")
@@ -315,3 +323,211 @@ exercise_3_7()
 #                         SELECT location_id FROM locations
 #                         WHERE country_id = 'US') ORDER BY manager_id""")
 # execute_select_query("SELECT first_name, last_name FROM employees WHERE manager_id = 200")
+
+list1 = [('Neena', 'Kochhar'),
+         ('Lex', 'De Haan'),
+         ('Alexander', 'Hunold'),
+         ('Bruce', 'Ernst'),
+         ('David', 'Austin'),
+         ('Valli', 'Pataballa'),
+         ('Diana', 'Lorentz'),
+         ('Nancy', 'Greenberg'),
+         ('Daniel', 'Faviet'),
+         ('John', 'Chen'),
+         ('Ismael', 'Sciarra'),
+         ('Jose Manuel', 'Urman'),
+         ('Luis', 'Popp'),
+         ('Den', 'Raphaely'),
+         ('Alexander', 'Khoo'),
+         ('Shelli', 'Baida'),
+         ('Sigal', 'Tobias'),
+         ('Guy', 'Himuro'),
+         ('Karen', 'Colmenares'),
+         ('Matthew', 'Weiss'),
+         ('Adam', 'Fripp'),
+         ('Payam', 'Kaufling'),
+         ('Shanta', 'Vollman'),
+         ('Kevin', 'Mourgos'),
+         ('Julia', 'Nayer'),
+         ('Irene', 'Mikkilineni'),
+         ('James', 'Landry'),
+         ('Steven', 'Markle'),
+         ('Laura', 'Bissot'),
+         ('Mozhe', 'Atkinson'),
+         ('James', 'Marlow'),
+         ('TJ', 'Olson'),
+         ('Jason', 'Mallin'),
+         ('Michael', 'Rogers'),
+         ('Ki', 'Gee'),
+         ('Hazel', 'Philtanker'),
+         ('Renske', 'Ladwig'),
+         ('Stephen', 'Stiles'),
+         ('John', 'Seo'),
+         ('Joshua', 'Patel'),
+         ('Trenna', 'Rajs'),
+         ('Curtis', 'Davies'),
+         ('Randall', 'Matos'),
+         ('Peter', 'Vargas'),
+         ('John', 'Russell'),
+         ('Karen', 'Partners'),
+         ('Alberto', 'Errazuriz'),
+         ('Gerald', 'Cambrault'),
+         ('Eleni', 'Zlotkey'),
+         ('Winston', 'Taylor'),
+         ('Jean', 'Fleaur'),
+         ('Martha', 'Sullivan'),
+         ('Girard', 'Geoni'),
+         ('Nandita', 'Sarchand'),
+         ('Alexis', 'Bull'),
+         ('Julia', 'Dellinger'),
+         ('Anthony', 'Cabrio'),
+         ('Kelly', 'Chung'),
+         ('Jennifer', 'Dilly'),
+         ('Timothy', 'Gates'),
+         ('Randall', 'Perkins'),
+         ('Sarah', 'Bell'),
+         ('Britney', 'Everett'),
+         ('Samuel', 'McCain'),
+         ('Vance', 'Jones'),
+         ('Alana', 'Walsh'),
+         ('Kevin', 'Feeney'),
+         ('Donald', 'OConnell'),
+         ('Douglas', 'Grant'),
+         ('Jennifer', 'Whalen'),
+         ('Michael', 'Hartstein'),
+         ('Susan', 'Mavris'),
+         ('Hermann', 'Baer'),
+         ('Shelley', 'Higgins'),
+         ('William', 'Gietz')]
+
+list2 = [('Neena', 'Kochhar'),
+         ('Lex', 'De Haan'),
+         ('Bruce', 'Ernst'),
+         ('David', 'Austin'),
+         ('Valli', 'Pataballa'),
+         ('Diana', 'Lorentz'),
+         ('Daniel', 'Faviet'),
+         ('John', 'Chen'),
+         ('Ismael', 'Sciarra'),
+         ('Jose Manuel', 'Urman'),
+         ('Luis', 'Popp'),
+         ('Den', 'Raphaely'),
+         ('Alexander', 'Khoo'),
+         ('Shelli', 'Baida'),
+         ('Sigal', 'Tobias'),
+         ('Guy', 'Himuro'),
+         ('Karen', 'Colmenares'),
+         ('Matthew', 'Weiss'),
+         ('Adam', 'Fripp'),
+         ('Payam', 'Kaufling'),
+         ('Shanta', 'Vollman'),
+         ('Kevin', 'Mourgos'),
+         ('Laura', 'Bissot'),
+         ('Mozhe', 'Atkinson'),
+         ('James', 'Marlow'),
+         ('TJ', 'Olson'),
+         ('John', 'Russell'),
+         ('Karen', 'Partners'),
+         ('Alberto', 'Errazuriz'),
+         ('Gerald', 'Cambrault'),
+         ('Eleni', 'Zlotkey'),
+         ('Nandita', 'Sarchand'),
+         ('Alexis', 'Bull'),
+         ('Julia', 'Dellinger'),
+         ('Anthony', 'Cabrio'),
+         ('Michael', 'Hartstein'),
+         ('William', 'Gietz')]
+
+list3 = [('Neena', 'Kochhar'),
+    ('Lex', 'De Haan'),
+    ('Alexander', 'Hunold'),
+    ('Bruce', 'Ernst'),
+    ('David', 'Austin'),
+    ('Valli', 'Pataballa'),
+    ('Diana', 'Lorentz'),
+    ('Nancy', 'Greenberg'),
+    ('Daniel', 'Faviet'),
+    ('John', 'Chen'),
+    ('Ismael', 'Sciarra'),
+    ('Jose Manuel', 'Urman'),
+    ('Luis', 'Popp'),
+    ('Den', 'Raphaely'),
+    ('Alexander', 'Khoo'),
+    ('Shelli', 'Baida'),
+    ('Sigal', 'Tobias'),
+    ('Guy', 'Himuro'),
+    ('Karen', 'Colmenares'),
+    ('Matthew', 'Weiss'),
+    ('Adam', 'Fripp'),
+    ('Payam', 'Kaufling'),
+    ('Shanta', 'Vollman'),
+    ('Kevin', 'Mourgos'),
+    ('Julia', 'Nayer'),
+    ('Irene', 'Mikkilineni'),
+    ('James', 'Landry'),
+    ('Steven', 'Markle'),
+    ('Laura', 'Bissot'),
+    ('Mozhe', 'Atkinson'),
+    ('James', 'Marlow'),
+    ('TJ', 'Olson'),
+    ('Jason', 'Mallin'),
+    ('Michael', 'Rogers'),
+    ('Ki', 'Gee'),
+    ('Hazel', 'Philtanker'),
+    ('Renske', 'Ladwig'),
+    ('Stephen', 'Stiles'),
+    ('John', 'Seo'),
+    ('Joshua', 'Patel'),
+    ('Trenna', 'Rajs'),
+    ('Curtis', 'Davies'),
+    ('Randall', 'Matos'),
+    ('Peter', 'Vargas'),
+    ('John', 'Russell'),
+    ('Karen', 'Partners'),
+    ('Alberto', 'Errazuriz'),
+    ('Gerald', 'Cambrault'),
+    ('Eleni', 'Zlotkey'),
+    ('Winston', 'Taylor'),
+    ('Jean', 'Fleaur'),
+    ('Martha', 'Sullivan'),
+    ('Girard', 'Geoni'),
+    ('Nandita', 'Sarchand'),
+    ('Alexis', 'Bull'),
+    ('Julia', 'Dellinger'),
+    ('Anthony', 'Cabrio'),
+    ('Kelly', 'Chung'),
+    ('Jennifer', 'Dilly'),
+    ('Timothy', 'Gates'),
+    ('Randall', 'Perkins'),
+    ('Sarah', 'Bell'),
+    ('Britney', 'Everett'),
+    ('Samuel', 'McCain'),
+    ('Vance', 'Jones'),
+    ('Alana', 'Walsh'),
+    ('Kevin', 'Feeney'),
+    ('Donald', 'OConnell'),
+    ('Douglas', 'Grant'),
+    ('Jennifer', 'Whalen'),
+    ('Michael', 'Hartstein'),
+    ('Susan', 'Mavris'),
+    ('Hermann', 'Baer'),
+    ('Shelley', 'Higgins'),
+    ('William', 'Gietz')]
+
+# if list1 == list3:
+#     print("yes")
+
+# for record in list1:
+#     if record in list2:
+#         print("yes")
+#     else:
+#         print(record)
+#         print("no")
+
+# execute_select_query("PRAGMA table_info (departments)")
+# execute_select_query("SELECT * FROM departments")
+# execute_select_query("PRAGMA table_info (employees)")
+# execute_select_query("SELECT * FROM employees")
+# execute_select_query("PRAGMA table_info (locations)")
+# execute_select_query("SELECT * FROM locations")
+# execute_select_query("SELECT * FROM employees WHERE last_name = 'Mavris'")

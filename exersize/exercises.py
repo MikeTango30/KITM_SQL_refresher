@@ -308,6 +308,20 @@ def exercise_3_7():
 # execute_select_query("SELECT * FROM locations")
 # execute_select_query("SELECT * FROM employees WHERE last_name = 'Mavris'")
 
+# EMPLOYEES
+# employee_id,
+# first_name,
+# last_name,
+# email,
+# phone_number,
+# hire_date,
+# job_id,
+# salary,
+# commission_pct,
+# manager_id,
+# department_id
+# Avg_Salary
+
 # JOBS
 # job_id
 # job_title
@@ -407,24 +421,12 @@ def exercise_4_7():
     # 7. Write a query to find the names (first_name, last_name) and hire date of the employees
     # who were hired after employee with last name 'Jones'.
     # Tables: employees
-    query = """SELECT first_name, last_name, hire_date FROM employees
-                                    WHERE hire_date > (SELECT hire_date FROM employees WHERE last_name = 'Jones')"""
+    query = """SELECT employees.first_name, employees.last_name, employees.hire_date FROM employees
+                                    JOIN employees jones
+                                    ON jones.last_name = 'Jones'
+                                    WHERE employees.hire_date > jones.hire_date"""
     execute_select_query(query)
 
-
-# EMPLOYEES
-# employee_id,
-# first_name,
-# last_name,
-# email,
-# phone_number,
-# hire_date,
-# job_id,
-# salary,
-# commission_pct,
-# manager_id,
-# department_id
-# Avg_Salary
 
 # exercise_4_1()
 # exercise_4_2()

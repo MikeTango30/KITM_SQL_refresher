@@ -248,40 +248,6 @@ def exercise_3_7():
 
 # execute_select_query("PRAGMA table_info (employees)")
 
-# EMPLOYEES
-# employee_id,
-# first_name,
-# last_name,
-# email,
-# phone_number,
-# hire_date,
-# job_id,
-# salary,
-# commission_pct,
-# manager_id,
-# department_id
-# Avg_Salary
-
-# JOBS
-# job_id
-# job_title
-# min_salary
-# max_salary
-
-# DEPARTMENTS
-# department_id,
-# depart_name,
-# manager_id,
-# location_id
-
-# LOCATIONS
-# location_id
-# street_address
-# postal_code
-# city
-# state_province
-# country_id
-
 # # PART ONE
 # exercise_one()
 # exercise_two()
@@ -309,7 +275,7 @@ def exercise_3_7():
 # exercise_3_2()
 # exercise_3_3()
 # exercise_3_4()
-exercise_3_5()
+# exercise_3_5()
 # exercise_3_6()
 # exercise_3_7()
 
@@ -323,196 +289,6 @@ exercise_3_5()
 #                         SELECT location_id FROM locations
 #                         WHERE country_id = 'US') ORDER BY manager_id""")
 # execute_select_query("SELECT first_name, last_name FROM employees WHERE manager_id = 200")
-
-list1 = [('Neena', 'Kochhar'),
-         ('Lex', 'De Haan'),
-         ('Alexander', 'Hunold'),
-         ('Bruce', 'Ernst'),
-         ('David', 'Austin'),
-         ('Valli', 'Pataballa'),
-         ('Diana', 'Lorentz'),
-         ('Nancy', 'Greenberg'),
-         ('Daniel', 'Faviet'),
-         ('John', 'Chen'),
-         ('Ismael', 'Sciarra'),
-         ('Jose Manuel', 'Urman'),
-         ('Luis', 'Popp'),
-         ('Den', 'Raphaely'),
-         ('Alexander', 'Khoo'),
-         ('Shelli', 'Baida'),
-         ('Sigal', 'Tobias'),
-         ('Guy', 'Himuro'),
-         ('Karen', 'Colmenares'),
-         ('Matthew', 'Weiss'),
-         ('Adam', 'Fripp'),
-         ('Payam', 'Kaufling'),
-         ('Shanta', 'Vollman'),
-         ('Kevin', 'Mourgos'),
-         ('Julia', 'Nayer'),
-         ('Irene', 'Mikkilineni'),
-         ('James', 'Landry'),
-         ('Steven', 'Markle'),
-         ('Laura', 'Bissot'),
-         ('Mozhe', 'Atkinson'),
-         ('James', 'Marlow'),
-         ('TJ', 'Olson'),
-         ('Jason', 'Mallin'),
-         ('Michael', 'Rogers'),
-         ('Ki', 'Gee'),
-         ('Hazel', 'Philtanker'),
-         ('Renske', 'Ladwig'),
-         ('Stephen', 'Stiles'),
-         ('John', 'Seo'),
-         ('Joshua', 'Patel'),
-         ('Trenna', 'Rajs'),
-         ('Curtis', 'Davies'),
-         ('Randall', 'Matos'),
-         ('Peter', 'Vargas'),
-         ('John', 'Russell'),
-         ('Karen', 'Partners'),
-         ('Alberto', 'Errazuriz'),
-         ('Gerald', 'Cambrault'),
-         ('Eleni', 'Zlotkey'),
-         ('Winston', 'Taylor'),
-         ('Jean', 'Fleaur'),
-         ('Martha', 'Sullivan'),
-         ('Girard', 'Geoni'),
-         ('Nandita', 'Sarchand'),
-         ('Alexis', 'Bull'),
-         ('Julia', 'Dellinger'),
-         ('Anthony', 'Cabrio'),
-         ('Kelly', 'Chung'),
-         ('Jennifer', 'Dilly'),
-         ('Timothy', 'Gates'),
-         ('Randall', 'Perkins'),
-         ('Sarah', 'Bell'),
-         ('Britney', 'Everett'),
-         ('Samuel', 'McCain'),
-         ('Vance', 'Jones'),
-         ('Alana', 'Walsh'),
-         ('Kevin', 'Feeney'),
-         ('Donald', 'OConnell'),
-         ('Douglas', 'Grant'),
-         ('Jennifer', 'Whalen'),
-         ('Michael', 'Hartstein'),
-         ('Susan', 'Mavris'),
-         ('Hermann', 'Baer'),
-         ('Shelley', 'Higgins'),
-         ('William', 'Gietz')]
-
-list2 = [('Neena', 'Kochhar'),
-         ('Lex', 'De Haan'),
-         ('Bruce', 'Ernst'),
-         ('David', 'Austin'),
-         ('Valli', 'Pataballa'),
-         ('Diana', 'Lorentz'),
-         ('Daniel', 'Faviet'),
-         ('John', 'Chen'),
-         ('Ismael', 'Sciarra'),
-         ('Jose Manuel', 'Urman'),
-         ('Luis', 'Popp'),
-         ('Den', 'Raphaely'),
-         ('Alexander', 'Khoo'),
-         ('Shelli', 'Baida'),
-         ('Sigal', 'Tobias'),
-         ('Guy', 'Himuro'),
-         ('Karen', 'Colmenares'),
-         ('Matthew', 'Weiss'),
-         ('Adam', 'Fripp'),
-         ('Payam', 'Kaufling'),
-         ('Shanta', 'Vollman'),
-         ('Kevin', 'Mourgos'),
-         ('Laura', 'Bissot'),
-         ('Mozhe', 'Atkinson'),
-         ('James', 'Marlow'),
-         ('TJ', 'Olson'),
-         ('John', 'Russell'),
-         ('Karen', 'Partners'),
-         ('Alberto', 'Errazuriz'),
-         ('Gerald', 'Cambrault'),
-         ('Eleni', 'Zlotkey'),
-         ('Nandita', 'Sarchand'),
-         ('Alexis', 'Bull'),
-         ('Julia', 'Dellinger'),
-         ('Anthony', 'Cabrio'),
-         ('Michael', 'Hartstein'),
-         ('William', 'Gietz')]
-
-list3 = [('Neena', 'Kochhar'),
-    ('Lex', 'De Haan'),
-    ('Alexander', 'Hunold'),
-    ('Bruce', 'Ernst'),
-    ('David', 'Austin'),
-    ('Valli', 'Pataballa'),
-    ('Diana', 'Lorentz'),
-    ('Nancy', 'Greenberg'),
-    ('Daniel', 'Faviet'),
-    ('John', 'Chen'),
-    ('Ismael', 'Sciarra'),
-    ('Jose Manuel', 'Urman'),
-    ('Luis', 'Popp'),
-    ('Den', 'Raphaely'),
-    ('Alexander', 'Khoo'),
-    ('Shelli', 'Baida'),
-    ('Sigal', 'Tobias'),
-    ('Guy', 'Himuro'),
-    ('Karen', 'Colmenares'),
-    ('Matthew', 'Weiss'),
-    ('Adam', 'Fripp'),
-    ('Payam', 'Kaufling'),
-    ('Shanta', 'Vollman'),
-    ('Kevin', 'Mourgos'),
-    ('Julia', 'Nayer'),
-    ('Irene', 'Mikkilineni'),
-    ('James', 'Landry'),
-    ('Steven', 'Markle'),
-    ('Laura', 'Bissot'),
-    ('Mozhe', 'Atkinson'),
-    ('James', 'Marlow'),
-    ('TJ', 'Olson'),
-    ('Jason', 'Mallin'),
-    ('Michael', 'Rogers'),
-    ('Ki', 'Gee'),
-    ('Hazel', 'Philtanker'),
-    ('Renske', 'Ladwig'),
-    ('Stephen', 'Stiles'),
-    ('John', 'Seo'),
-    ('Joshua', 'Patel'),
-    ('Trenna', 'Rajs'),
-    ('Curtis', 'Davies'),
-    ('Randall', 'Matos'),
-    ('Peter', 'Vargas'),
-    ('John', 'Russell'),
-    ('Karen', 'Partners'),
-    ('Alberto', 'Errazuriz'),
-    ('Gerald', 'Cambrault'),
-    ('Eleni', 'Zlotkey'),
-    ('Winston', 'Taylor'),
-    ('Jean', 'Fleaur'),
-    ('Martha', 'Sullivan'),
-    ('Girard', 'Geoni'),
-    ('Nandita', 'Sarchand'),
-    ('Alexis', 'Bull'),
-    ('Julia', 'Dellinger'),
-    ('Anthony', 'Cabrio'),
-    ('Kelly', 'Chung'),
-    ('Jennifer', 'Dilly'),
-    ('Timothy', 'Gates'),
-    ('Randall', 'Perkins'),
-    ('Sarah', 'Bell'),
-    ('Britney', 'Everett'),
-    ('Samuel', 'McCain'),
-    ('Vance', 'Jones'),
-    ('Alana', 'Walsh'),
-    ('Kevin', 'Feeney'),
-    ('Donald', 'OConnell'),
-    ('Douglas', 'Grant'),
-    ('Jennifer', 'Whalen'),
-    ('Michael', 'Hartstein'),
-    ('Susan', 'Mavris'),
-    ('Hermann', 'Baer'),
-    ('Shelley', 'Higgins'),
-    ('William', 'Gietz')]
 
 # if list1 == list3:
 #     print("yes")
@@ -531,3 +307,129 @@ list3 = [('Neena', 'Kochhar'),
 # execute_select_query("PRAGMA table_info (locations)")
 # execute_select_query("SELECT * FROM locations")
 # execute_select_query("SELECT * FROM employees WHERE last_name = 'Mavris'")
+
+# JOBS
+# job_id
+# job_title
+# min_salary
+# max_salary
+
+# DEPARTMENTS
+# department_id,
+# depart_name,
+# manager_id,
+# location_id
+
+# LOCATIONS
+# location_id
+# street_address
+# postal_code
+# city
+# state_province
+# country_id
+
+# JOB HISTORY
+# employee_id
+# start_date
+# end_date
+# job_id
+# department_id
+
+
+# PART FOUR
+def exercise_4_1():
+    # 1.Write a query to get the department name and number of employees in the department
+    # Tables: employees, departments
+    query = """SELECT depart_name, COUNT(employee_id) 
+                                FROM departments 
+                                JOIN employees 
+                                USING(department_id) 
+                                GROUP BY depart_name"""
+    execute_select_query(query)
+
+
+def exercise_4_2():
+    # 2.Write a query to display the department ID, department name, and manager first name.
+    # Tables: employees, departments
+    query = """SELECT departments.department_id, departments.depart_name, first_name 
+                                FROM departments 
+                                JOIN employees 
+                                ON departments.manager_id = employees.employee_id 
+                                GROUP BY depart_name 
+                                ORDER BY departments.department_id  
+                                """
+    execute_select_query(query)
+
+
+def exercise_4_3():
+    # 3. Write a query to display the department name, manager name, and city.
+    # Tables: employees, departments, locations
+    query = """SELECT depart_name, first_name, city 
+                                FROM departments 
+                                JOIN employees 
+                                ON departments.manager_id = employees.employee_id
+                                JOIN locations
+                                ON departments.location_id = locations.location_id 
+                                GROUP BY depart_name 
+                                ORDER BY departments.department_id  
+                                """
+    execute_select_query(query)
+
+
+def exercise_4_4():
+    # 4.Write a query to display the job history
+    # that was done by any employee who is currently drawing more than 10000 of salary.
+    # Tables: employees, job_history
+    query = """SELECT * FROM job_history JOIN employees USING(employee_id) WHERE salary > 10000"""
+    execute_select_query(query)
+
+
+def exercise_4_5():
+    # 5.Write a query to display the job title and average salary of employees.
+    # Tables: employees, jobs
+    query = """SELECT job_title, AVG(salary) FROM jobs 
+                                            JOIN employees 
+                                            USING(job_id) GROUP BY job_title"""
+    execute_select_query(query)
+
+
+def exercise_4_6():
+    # 6. Write a query to find the employee ID, job title number of days between ending date and starting date
+    # for all jobs in department 90 from job history.
+    # Tables:job_history, jobs
+    query = """SELECT employee_id, job_title, end_date - start_date FROM job_history
+                                    NATURAL JOIN jobs 
+                                    WHERE job_history.department_id = 90"""
+    execute_select_query(query)
+
+
+def exercise_4_7():
+    # 7. Write a query to find the names (first_name, last_name) and hire date of the employees
+    # who were hired after employee with last name 'Jones'.
+    # Tables: employees
+    query = """SELECT first_name, last_name, hire_date FROM employees
+                                    WHERE hire_date > (SELECT hire_date FROM employees WHERE last_name = 'Jones')"""
+    execute_select_query(query)
+
+
+# EMPLOYEES
+# employee_id,
+# first_name,
+# last_name,
+# email,
+# phone_number,
+# hire_date,
+# job_id,
+# salary,
+# commission_pct,
+# manager_id,
+# department_id
+# Avg_Salary
+
+# exercise_4_1()
+# exercise_4_2()
+# exercise_4_3()
+# exercise_4_4()
+# exercise_4_5()
+# exercise_4_6()
+# exercise_4_7()
